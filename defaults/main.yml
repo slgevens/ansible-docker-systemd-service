@@ -17,3 +17,4 @@ service_state: started
 service_restart: true
 template_env_path: "env.j2"
 template_unit_path: "unit.j2"
+service_systemd_after: "docker.service"

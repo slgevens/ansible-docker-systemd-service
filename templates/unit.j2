@@ -4,7 +4,11 @@
 {% endmacro %}
 {% set service_systemd_options_keys = service_systemd_options | selectattr("key") | map(attribute="key") | list %}
 [Unit]
+{% if service_systemd_after is defined %}
+After={{ service_systemd_after }}
+{% else %}
 After=docker.service
+{% endif %}
 PartOf=docker.service
 Requires=docker.service
 
