@@ -45,4 +45,8 @@ RestartSec=10s
 {% endif %}
 
 [Install]
+{% if service_systemd_wantedby is defined %}
+WantedBy={{ service_systemd_wantedby }}
+{% else %}
 WantedBy=docker.service
+{% endif %}
