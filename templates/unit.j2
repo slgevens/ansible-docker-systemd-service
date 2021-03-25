@@ -4,6 +4,12 @@
 {% endmacro %}
 {% set service_systemd_options_keys = service_systemd_options | selectattr("key") | map(attribute="key") | list %}
 [Unit]
+{% if service_systemd_description is defined %}
+Description="{{ service_systemd_description }}"
+{% endif %}
+{% if service_systemd_documentation is defined %}
+Documentation="{{ service_systemd_documentation }}"
+{% endif %}
 {% if service_systemd_after is defined %}
 After={{ service_systemd_after }}
 {% else %}
